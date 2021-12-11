@@ -52,9 +52,9 @@ public:
     Matrix operator*(double k) const;
 
     Matrix adamarProduct(const Matrix &matrix) const;
-
+    Matrix transpose() const;
     static Matrix buildIdentityMatrix(int size);
-
+    Matrix reverseMatrix() const;
 };
 
 

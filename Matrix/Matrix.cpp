@@ -200,6 +200,45 @@ int Matrix::rank() const {
     return rank;
 }
 
+Matrix Matrix::transpose() const {
+    Matrix res(size_j, size_i);
+    for (int i = 0; i < size_i; ++i) {
+        for (int j = 0; j < size_j; ++j) {
+            res.elements[j * size_i + i] = this->operator()(i, j);
+        }
+    }
+    return res;
+}
+
+Matrix Matrix::reverseMatrix() const {
+    double det = this->determinant();
+    try {
+        if (std::abs(det) < 1e-7) throw std::runtime_error("Обратная матрица не существует, определитель равен 0");
+    } catch (std::exception &exception) {
+        std::cerr << "Ошибка: " << exception.what() << std::endl;
+    }
+    Matrix A(size_i, size_j);
+    Matrix M(size_i - 1, size_j - 1);
+    for (int i = 0; i < size_i; ++i) {
+        for (int j = 0; j < size_j; ++j) {
+            int i_index = 0;
+            for(int k = 0; k < size_i; ++k){
+                if(k == i) continue;
+                int j_index = 0;
+                for(int l = 0; l < size_j; ++l){
+                    if(l == j) continue;
+                    M.elements[i_index * (size_j - 1) + j_index] = this->operator()(k, l);
+                    ++j_index;
+                }
+                ++i_index;
+            }
+            A.elements[i * size_j + j] = M.determinant() * std::pow(-1, i + j);
+        }
+    }
+    A = A.transpose();
+    return A * (1. / det);
+}
+
 
 
 

@@ -29,5 +29,8 @@ int main() {
     std::cout << matrix1.adamarProduct(matrix1);
     std::cout << Matrix::buildIdentityMatrix(3);
     std::cout << ' ' << matrix2.rank();
+    std::cout << vector.euclidianNorm() << " " << vector * vector <<std::endl;
+    std::cout << vector.angle(vector) << std::endl;
+    std::cout<<matrix1.reverseMatrix();
     return 0;
 }

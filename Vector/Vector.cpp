@@ -12,7 +12,7 @@ Vector::Vector(int size, const std::vector<std::pair<int, double>> &data) : size
 }
 
 double Vector::operator*(const Vector &vector) const {
-    return Matrix::operator*(vector)(0, 0);
+    return vector.transpose().operator*(vector)(0, 0);
 }
 
 double Vector::operator()(int i) const {
@@ -20,7 +20,7 @@ double Vector::operator()(int i) const {
 }
 
 Vector Vector::operator+(const Vector &vector) const {
-    return Matrix::operator*(vector);
+    return Matrix::operator+(vector);
 }
 
 Vector::Vector(const std::vector<double> &vector) : Matrix(static_cast<int>(vector.size()), 1),
@@ -60,6 +60,6 @@ double Vector::maxNorm() const {
 }
 
 double Vector::angle(const Vector &vector) const {
-    return std::acos(this->operator*(vector) / this->euclidianNorm() / vector.euclidianNorm());
+    return std::acos(this->operator*(vector)/ this->euclidianNorm() / vector.euclidianNorm());
 }
 

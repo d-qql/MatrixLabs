@@ -19,10 +19,10 @@ public:
     explicit Vector(const std::vector<double> &vector);
 
     Vector(int size, const std::vector<std::pair<int, double>> &data);
+    using Matrix::operator*;
 
     double operator*(const Vector &vector) const;
 
-    using Matrix::operator*;
     using Matrix::operator-;
     using Matrix::operator();
 
