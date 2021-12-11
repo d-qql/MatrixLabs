@@ -32,7 +32,7 @@ int main() {
 //    std::cout << vector.euclidianNorm() << " " << vector * vector <<std::endl;
 //    std::cout << vector.angle(vector) << std::endl;
 //    std::cout<<matrix1.reverseMatrix();
-Matrix m("/home/d-qql/CLionProjects/lab1forStepan/data.txt");
+Matrix m("/home/d-qql/CLionProjects/labMatrix/data.txt");
 std::cout<<m << m.rank() << m.transpose();
     return 0;
 }

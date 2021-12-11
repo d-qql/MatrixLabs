@@ -2,8 +2,8 @@
 // Created by d-qql on 11.12.2021.
 //
 
-#ifndef LAB1FORSTEPAN_DIAGONALMATRIX_HPP
-#define LAB1FORSTEPAN_DIAGONALMATRIX_HPP
+#ifndef LABMATRIX_DIAGONALMATRIX_HPP
+#define LABMATRIX_DIAGONALMATRIX_HPP
 
 #include "Matrix.hpp"
 class DiagonalMatrix: public Matrix{
@@ -12,4 +12,4 @@ explicit DiagonalMatrix(const std::vector<double>& data);
 };
 
 
-#endif //LAB1FORSTEPAN_DIAGONALMATRIX_HPP
+#endif //LABMATRIX_DIAGONALMATRIX_HPP

@@ -2,8 +2,8 @@
 // Created by d-qql on 10.12.2021.
 //
 
-#ifndef LAB1FORSTEPAN_TRIPLET_HPP
-#define LAB1FORSTEPAN_TRIPLET_HPP
+#ifndef LABMATRIX_TRIPLET_HPP
+#define LABMATRIX_TRIPLET_HPP
 
 #include <utility>
 #include <vector>
@@ -21,4 +21,4 @@ static std::vector<Triplet> tripletVecFromPairVec(const std::vector<std::pair<in
     }
     return result;
 }
-#endif //LAB1FORSTEPAN_TRIPLET_HPP
+#endif //LABMATRIX_TRIPLET_HPP

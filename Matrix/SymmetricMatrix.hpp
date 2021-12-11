@@ -2,8 +2,8 @@
 // Created by d-qql on 11.12.2021.
 //
 
-#ifndef LAB1FORSTEPAN_SYMMETRICMATRIX_HPP
-#define LAB1FORSTEPAN_SYMMETRICMATRIX_HPP
+#ifndef LABMATRIX_SYMMETRICMATRIX_HPP
+#define LABMATRIX_SYMMETRICMATRIX_HPP
 
 #include "Matrix.hpp"
 
@@ -12,4 +12,4 @@ class SymmetricMatrix: public Matrix{
 };
 
 
-#endif //LAB1FORSTEPAN_SYMMETRICMATRIX_HPP
+#endif //LABMATRIX_SYMMETRICMATRIX_HPP

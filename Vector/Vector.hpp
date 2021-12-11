@@ -2,8 +2,8 @@
 // Created by d-qql on 11.12.2021.
 //
 
-#ifndef LAB1FORSTEPAN_VECTOR_HPP
-#define LAB1FORSTEPAN_VECTOR_HPP
+#ifndef LABMATRIX_VECTOR_HPP
+#define LABMATRIX_VECTOR_HPP
 
 #include "../Matrix/Matrix.hpp"
 
@@ -40,4 +40,4 @@ public:
 };
 
 
-#endif //LAB1FORSTEPAN_VECTOR_HPP
+#endif //LABMATRIX_VECTOR_HPP
