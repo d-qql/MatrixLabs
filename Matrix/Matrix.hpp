@@ -36,6 +36,7 @@ public:
 
     double determinant() const;
     double frobeniusNorm() const;
+    int rank() const;
     int getSizeI() const;
 
     int getSizeJ() const;

@@ -5,6 +5,7 @@
 #include "Matrix.hpp"
 #include <iostream>
 #include "../Overloads/Overloads.hpp"
+
 Matrix::Matrix(int i_size, int j_size, const std::vector<Triplet> &data) : size_i(i_size), size_j(j_size) {
 
     elements.resize(size_i * size_j, 0);
@@ -122,16 +123,18 @@ void Matrix::swap_rows(int first, int second) {
 
 int Matrix::triangulation() {
     int swapCount = 0;
-
-    for (int i = 0; i < size_i - 1; ++i) {
+    int min_size;
+    if (size_i < size_j) min_size = size_i;
+    else min_size = size_j;
+    for (int i = 0; i < min_size - 1; ++i) {
         int iNonZero = colNonZero(i);
         if (std::abs(this->operator()(iNonZero, i)) > 1e-7) {
             swap_rows(i, iNonZero);
             ++swapCount;
         } else { continue; }
-        for (int k = i + 1; k < size_i; ++k) {
+        for (int k = i + 1; k < min_size; ++k) {
             double coef = this->operator()(k, i) / this->operator()(i, i);
-            for (int j = 0; j < size_j; ++j) {
+            for (int j = 0; j < min_size; ++j) {
                 elements[k * size_j + j] -= this->operator()(i, j) * coef;
             }
         }
@@ -140,10 +143,12 @@ int Matrix::triangulation() {
 }
 
 int Matrix::colNonZero(int col) const {
+
     if (std::abs(this->operator()(col, col)) > 1e-7) return col;
     else {
         for (int i = col + 1; i < size_i; ++i) {
             if (std::abs(this->operator()(i, col)) > 1e-7) return i;
+
         }
     }
     return col;
@@ -181,6 +186,18 @@ double Matrix::frobeniusNorm() const {
     Matrix matrix = this->operator+(*this);
     double trace = matrix.trace();
     return std::sqrt(trace);
+}
+
+int Matrix::rank() const {
+    Matrix matrix = *this;
+    int swaps_count = matrix.triangulation();
+    int rank = 0;
+    int max_size = size_i < size_j ? size_i : size_j;
+    for (int i = 0; i < max_size; ++i) {
+        if (std::abs(matrix(i, i)) > 1e-7)
+            ++rank;
+    }
+    return rank;
 }
 
 

@@ -8,7 +8,14 @@ int main() {
                                   {0, 1, 3},
                                   {1, 0, 2},
                                   {1, 1, 10}};
-
+    std::vector<Triplet> input1 = {{0, 0, 1},
+                                   {0, 1, 3},
+                                   {0, 2, 1},
+                                   {1, 0, 2},
+                                   {1, 1, 10},
+                                   {1, 2, 1},
+};
+    Matrix matrix2(2, 3, input1);
     std::vector<double> vecData = {1, 2};
     Matrix matrix1(2, 2, input);
     Vector vector(vecData);
@@ -21,5 +28,6 @@ int main() {
     std::cout << matrix1 - matrix1 * 2;
     std::cout << matrix1.adamarProduct(matrix1);
     std::cout << Matrix::buildIdentityMatrix(3);
+    std::cout << ' ' << matrix2.rank();
     return 0;
 }
