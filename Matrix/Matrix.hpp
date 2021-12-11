@@ -28,6 +28,8 @@ protected:
 
 public:
 //    Matrix() = default;
+    explicit Matrix(const std::string &FULL_PATH);
+
     Matrix(int i, int j);
 
     Matrix(int i, int j, const std::vector<Triplet> &data);
@@ -35,8 +37,11 @@ public:
     double trace() const;
 
     double determinant() const;
+
     double frobeniusNorm() const;
+
     int rank() const;
+
     int getSizeI() const;
 
     int getSizeJ() const;
@@ -52,9 +57,13 @@ public:
     Matrix operator*(double k) const;
 
     Matrix adamarProduct(const Matrix &matrix) const;
+
     Matrix transpose() const;
+
     static Matrix buildIdentityMatrix(int size);
+
     Matrix reverseMatrix() const;
+
 };
 
 

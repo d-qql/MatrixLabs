@@ -4,6 +4,9 @@
 
 #include "Matrix.hpp"
 #include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <sstream>
 #include "../Overloads/Overloads.hpp"
 
 Matrix::Matrix(int i_size, int j_size, const std::vector<Triplet> &data) : size_i(i_size), size_j(j_size) {
@@ -222,11 +225,11 @@ Matrix Matrix::reverseMatrix() const {
     for (int i = 0; i < size_i; ++i) {
         for (int j = 0; j < size_j; ++j) {
             int i_index = 0;
-            for(int k = 0; k < size_i; ++k){
-                if(k == i) continue;
+            for (int k = 0; k < size_i; ++k) {
+                if (k == i) continue;
                 int j_index = 0;
-                for(int l = 0; l < size_j; ++l){
-                    if(l == j) continue;
+                for (int l = 0; l < size_j; ++l) {
+                    if (l == j) continue;
                     M.elements[i_index * (size_j - 1) + j_index] = this->operator()(k, l);
                     ++j_index;
                 }
@@ -239,6 +242,34 @@ Matrix Matrix::reverseMatrix() const {
     return A * (1. / det);
 }
 
+Matrix::Matrix(const std::string &FULL_PATH) {
+    std::string line;
+    std::vector<Triplet> MatrixData;
+    try {
+        std::ifstream in(FULL_PATH); // окрываем файл для чтения
+        if (!in.is_open()) throw std::runtime_error("Не удалось открыть файл на чтение");
+        std::vector<double> data;
+        int line_num = 0;
+        int width = 0;
+        if (in.is_open()) {
 
+            while (getline(in, line)) {
+
+                std::istringstream ist(line);
+                for (std::string word; ist >> word; data.push_back(std::atof(word.c_str())));
+                for (int i = 0; i < data.size(); ++i) {
+                    MatrixData.push_back({line_num, i, data[i]});
+                }
+                if(data.size() > width) width = data.size();
+                data.clear();
+                line_num += 1;
+            }
+        }
+        in.close();     // закрываем файл
+        *this = Matrix(line_num, width, MatrixData);
+    } catch (std::exception &exception) {
+        std::cerr << "Ошибка: " << exception.what() << std::endl;
+    }
+}
 
 
